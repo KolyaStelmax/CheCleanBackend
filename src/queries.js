@@ -1,13 +1,6 @@
 const { Pool } = require('pg');
 
-const pool = new Pool({
- user: 'alex',
- host: 'localhost',
- database: 'che_clean',
- password: 'lexpass',
- port: 5432,
-});
-
+const pool = new Pool();
 const getCases = (request, response) => {
  pool.query('SELECT * FROM cases ORDER BY id ASC', (error, results) => {
   if (error) {
