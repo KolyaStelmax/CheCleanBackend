@@ -1,11 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-require('dotenv').config();
+import express from 'express';
+import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
+import { getCases } from './queries.js';
+
+dotenv.config();
 
 const app = express();
-const db = require('./queries');
 
-app.get('/cases', db.getCases);
+app.get('/cases', getCases);
 
 app.use(bodyParser.json());
 app.use(

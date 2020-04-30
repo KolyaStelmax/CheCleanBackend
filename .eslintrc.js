@@ -13,6 +13,8 @@ module.exports = {
 		sourceType: 'module'
 	},
 	rules: {
+    "import/extentions": false,
+    "import/prefer-default-export": "off",
 		semi: [ 'error', 'always' ],
 		quotes: [ 'error', 'single' ],
 		'no-console': 'off'
