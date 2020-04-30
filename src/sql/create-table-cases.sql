@@ -8,5 +8,6 @@ CREATE TABLE cases (
     created_at TIMESTAMP DEFAULT NOW() 
 );
 
+-- TODO remove this
 INSERT INTO cases (details, longtitude, latitude, photo_url) 
 VALUES('мусор', 49.457857, 32.043704, 'test-url');
