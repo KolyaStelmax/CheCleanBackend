@@ -3,7 +3,9 @@ export class CasesService {
     this.postgresService = postgresService;
   }
 
-  getCases(searchParams) {
+  async getCases(searchParams) {
+    const casesRespose = await this.postgresService.pool.query('SELECT * FROM cases ORDER BY id ASC');
+    return casesRespose.rows;
     return Promise.resolve([]);
   }
 
