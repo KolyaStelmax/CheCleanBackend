@@ -4,5 +4,5 @@ services:
     postgres:
         image: "postgres:12"
         ports: 
-            - "5432:5432"
+            - "3300:3300"
         env_file: ".env"
