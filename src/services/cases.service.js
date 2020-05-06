@@ -5,7 +5,7 @@ export class CasesService {
       limit: 25,
 			offset: 0,
 			status: 0,
-    }
+    };
   }
 
   remapCase({id, details, location, address, image_url, map_image_url, status, created_at}) {
