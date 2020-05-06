@@ -2,8 +2,9 @@ export class CasesService {
   constructor(postgresService) {
     this.postgresService = postgresService;
     this.DEFAULT_PARAMS = {
-      limit: 5,
-      offset: 0,
+      limit: 25,
+			offset: 0,
+			status: 0,
     }
   }
 
@@ -15,23 +16,37 @@ export class CasesService {
         latitude: location.x,
         longtitude: location.y,
         address,
-        map_image_url
+        map_image_url,
       },
       image_url,
       status,
-      created_at
+      created_at,
     }
   }
 
   async getCases(searchParams) {
     const currentParams = {
       ...this.DEFAULT_PARAMS,
-      ...searchParams
-    }
-    const casesRespose = await this.postgresService.knex('cases')
+      ...searchParams,
+		};
+
+		const casesRespose = await this.postgresService.knex('cases')
+			.orderBy('id')
       .limit(currentParams.limit)
-      .offset(currentParams.offset)
-      .orderBy('id');
+			.offset(currentParams.offset)
+			.modify((query) => {
+				if (currentParams.id) {
+					query.where('id', currentParams.id);
+				}
+
+				if (currentParams.status) {
+					query.where('status', currentParams.status);
+				}
+
+				if (currentParams.details) {
+					query.where('details', 'like', `%${currentParams.details}%`);
+				}
+			});
 
     return casesRespose.map(this.remapCase);
   }
