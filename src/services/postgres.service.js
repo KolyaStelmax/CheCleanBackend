@@ -1,11 +1,7 @@
-import pg from 'pg';
-
 import knex from 'knex';
 
 export class PostgresService {
   constructor() {
-    this.pool = new pg.Pool();
-
     this.knex = knex({
       client: 'pg',
       connection: {

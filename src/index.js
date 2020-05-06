@@ -27,12 +27,3 @@ app.listen(process.env.PORT, () => {
 	console.log(`Server started on port ${process.env.PORT}.`);
 });
 
-let newCase =
-  {details: 'мусор',
-   location:{longitude: 49.457857, latitude: 32.043704},
-   image_url: 'test image',
-  }
-
-// casesService.getCaseById(3).then(console.log);
-// casesService.createCase(newCase).then(console.log);
-// casesService.unresolveCase(3).then(console.log);
