@@ -3,7 +3,7 @@ export class CasesService {
     this.postgresService = postgresService;
     this.DEFAULT_PARAMS = {
       limit: 5,
-      offset: 0
+      offset: 0,
     }
   }
 

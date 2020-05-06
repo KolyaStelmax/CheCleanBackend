@@ -34,5 +34,5 @@ let newCase =
   }
 
 // casesService.getCaseById(3).then(console.log);
-// // casesService.createCase(newCase).then(console.log);
+// casesService.createCase(newCase).then(console.log);
 // casesService.unresolveCase(3).then(console.log);
