@@ -15,14 +15,15 @@ app.use(
 );
 
 app.get('/', (request, response) => {
-	response.json({ info: 'Node.js, Express, and Postgres API' });
+  response.json({ info: 'CheClean' });
 });
 
 app.get('/cases', async (request, response) =>{
-  const cases = await casesService.getCases();
+  const cases = await casesService.getCases(request.query);
   response.status(200).json(cases);
 });
 
 app.listen(process.env.PORT, () => {
 	console.log(`Server started on port ${process.env.PORT}.`);
 });
+

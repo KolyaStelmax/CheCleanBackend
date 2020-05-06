@@ -1,27 +1,78 @@
 export class CasesService {
   constructor(postgresService) {
     this.postgresService = postgresService;
+    this.DEFAULT_PARAMS = {
+      limit: 5,
+      offset: 0,
+    }
+  }
+
+  remapCase({id, details, location, address, image_url, map_image_url, status, created_at}) {
+    return {
+      id,
+      details,
+      location:{
+        latitude: location.x,
+        longtitude: location.y,
+        address,
+        map_image_url
+      },
+      image_url,
+      status,
+      created_at
+    }
   }
 
   async getCases(searchParams) {
-    const casesRespose = await this.postgresService.pool.query('SELECT * FROM cases ORDER BY id ASC');
-    return casesRespose.rows;
-    return Promise.resolve([]);
+    const currentParams = {
+      ...this.DEFAULT_PARAMS,
+      ...searchParams
+    }
+    const casesRespose = await this.postgresService.knex('cases')
+      .limit(currentParams.limit)
+      .offset(currentParams.offset)
+      .orderBy('id');
+
+    return casesRespose.map(this.remapCase);
   }
 
-  getCaseById(id) {
-    return Promise.resolve({});
+  async getCaseById(id) {
+    const idResponse = await this.postgresService.knex('cases')
+      .where('id', id);
+
+    return idResponse.map(this.remapCase);
   }
 
-  createCase(newCase) {
-    return Promise.resolve({});
+  async createCase(newCase) {
+    const databaseCase = {
+      ...newCase,
+      location: newCase.location.latitude + ', ' + newCase.location.longitude,
+      address: '',
+      map_image_url: ''
+    }
+
+    const createdCase = await this.postgresService.knex('cases')
+      .insert(databaseCase)
+      .returning('*');
+
+    return this.remapCase(createdCase[0]);
   }
 
-  resolveCase(id) {
-    return Promise.resolve(id);
+  async resolveCase(id) {
+    const resolvedCase = await this.postgresService.knex('cases')
+      .where('id', id)
+      .update({status: 1})
+      .returning('*');
+
+    return this.remapCase(resolvedCase[0]);
   }
 
-  unresolveCase(id) {
-    return Promise.resolve(id);
+  async unresolveCase(id) {
+    const unresolvedCase = await this.postgresService.knex('cases')
+      .where('id', id)
+      .update({status: 0})
+      .returning('*');
+
+    return this.remapCase(unresolvedCase[0]);
   }
 }

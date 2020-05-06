@@ -1,17 +1,16 @@
-import pg from 'pg';
+import knex from 'knex';
 
 export class PostgresService {
   constructor() {
-    this.pool = new pg.Pool();
+    this.knex = knex({
+      client: 'pg',
+      connection: {
+        host : process.env.PGHOST,
+        user : process.env.PGUSER,
+        password : process.env.PGPASSWORD,
+        database : process.env.PGDATABASE
+      },
+      pool: { min: 0, max: 7 }
+    })
   }
 }
-
-const pool = new pg.Pool();
-export const getCases = (request, response) => {
- pool.query('SELECT * FROM cases ORDER BY id ASC', (error, results) => {
-  if (error) {
-   throw error;
-  }
-  response.status(200).json(results.rows);
- });
-};
