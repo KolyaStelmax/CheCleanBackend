@@ -1,5 +1,5 @@
 import express from 'express';
-import 'express-async-errors'
+import 'express-async-errors';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { casesService } from './services/index.js';
@@ -45,10 +45,10 @@ app.patch('/cases/:id/unresolve', async (request, response) => {
 });
 
 app.use((err, request, response, next) => {
-  console.error(err)
-  response.status(500).json({errorMessage: err.message})
-  next()
-})
+  console.error(err);
+  response.status(500).json({ errorMessage: err.message });
+  next();
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`Server started on port ${process.env.PORT}.`);
