@@ -1,4 +1,5 @@
 import express from 'express';
+import 'express-async-errors'
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import { casesService } from './services/index.js';
@@ -18,17 +19,9 @@ app.get('/', (request, response) => {
   response.json({ info: 'CheClean' });
 });
 
-app.use((error, request, response, next) => {
-  request.status(500).json({ error });
-});
-
 app.get('/cases', async (request, response) => {
-  try {
-    const cases = await casesService.getCases(request.query);
-    response.status(200).json(cases);
-  } catch (err) {
-    console.error(err);
-  }
+  const cases = await casesService.getCases(request.query);
+  response.status(200).json(cases);
 });
 
 app.get('/cases/:id', async (request, response) => {
@@ -50,6 +43,12 @@ app.patch('/cases/:id/unresolve', async (request, response) => {
   const unresolveCase = await casesService.unresolveCase(+request.params.id);
   response.status(200).json(unresolveCase);
 });
+
+app.use((err, request, response, next) => {
+  console.error(err)
+  response.status(500).json({errorMessage: err.message})
+  next()
+})
 
 app.listen(process.env.PORT, () => {
   console.log(`Server started on port ${process.env.PORT}.`);
