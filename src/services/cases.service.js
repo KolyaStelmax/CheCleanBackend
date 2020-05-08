@@ -4,7 +4,6 @@ export class CasesService {
     this.DEFAULT_PARAMS = {
       limit: 25,
 			offset: 0,
-			status: 0,
     };
   }
 
@@ -31,7 +30,7 @@ export class CasesService {
 		};
 
 		const casesRespose = await this.postgresService.knex('cases')
-			.orderBy('id')
+			.orderBy('id', 'desc')
       .limit(currentParams.limit)
 			.offset(currentParams.offset)
 			.modify((query) => {
