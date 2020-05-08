@@ -7,4 +7,3 @@ export const casesService = new CasesService(postgresService);
 export * from './cases.service.js';
 export * from './postgres.service.js';
 
-// casesService.getCases().then(console.log);
