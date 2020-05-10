@@ -1,4 +1,9 @@
+import {PostgresService} from './postgres.service.js'
+
 export class CasesService {
+  /**
+   * @param {PostgresService} postgresService
+   */
   constructor(postgresService) {
     this.postgresService = postgresService;
     this.DEFAULT_PARAMS = {
