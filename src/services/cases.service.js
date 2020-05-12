@@ -1,10 +1,14 @@
-import { CommonMocks } from '../mocks/common.js';
+import { PostgresService } from './postgres.service.js'
+
 export class CasesService {
+  /**
+   * @param {PostgresService} postgresService
+   */
   constructor(postgresService) {
     this.postgresService = postgresService;
     this.DEFAULT_PARAMS = {
-      limit: 5,
-      offset: 0,
+      limit: 25,
+			offset: 0,
     };
   }
 
@@ -28,12 +32,26 @@ export class CasesService {
     const currentParams = {
       ...this.DEFAULT_PARAMS,
       ...searchParams,
-    };
+		};
+
     const casesRespose = await this.postgresService
       .knex('cases')
+			.orderBy('id', 'desc')
       .limit(currentParams.limit)
-      .offset(currentParams.offset)
-      .orderBy('id');
+			.offset(currentParams.offset)
+			.modify((query) => {
+				if (currentParams.id) {
+					query.where('id', currentParams.id);
+				}
+
+				if (currentParams.status) {
+					query.where('status', currentParams.status);
+				}
+
+				if (currentParams.details) {
+					query.where('details', 'like', `%${currentParams.details}%`);
+				}
+			});
 
     return casesRespose.map(this.remapCase);
   }
