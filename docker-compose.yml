@@ -1,8 +1,21 @@
 version: "3"
 
 services:
+    backend:
+      build: .
+      volumes:
+        - ".:/usr/src/app"
+      ports:
+        - "3000:3000"
+      env_file: ".env"
+      environment:
+        - 'PGHOST=postgres'
+      depends_on:
+        - postgres
+
     postgres:
         image: "postgres:12"
-        ports: 
+        ports:
             - "3300:3300"
         env_file: ".env"
+
