@@ -28,6 +28,8 @@
   },
   "scripts": {
     "start": "nodemon src/index.js",
+    "docker": "docker-compose up",
+    "docker:full": "docker-compose build && docker-compose run --rm backend npm run migrate && docker-compose up",
     "lint": "npx eslint src/**.js",
     "lint:fix": "npx eslint src/**.js --fix",
     "migrate": "npx knex migrate:latest",
