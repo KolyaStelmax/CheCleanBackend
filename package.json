@@ -30,6 +30,9 @@
     "start": "nodemon src/index.js",
     "lint": "npx eslint src/**.js",
     "lint:fix": "npx eslint src/**.js --fix",
+    "migrate": "npx knex migrate:latest",
+    "migrate:rollback": "npx knex migrate:rollback",
+    "migrate:seed": "npx knex seed:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lexander1108",
