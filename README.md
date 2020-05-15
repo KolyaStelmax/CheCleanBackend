@@ -10,8 +10,10 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
 ## Table of Contents
 1. [Quick start](#qick-start)
     1. [Requirements](#requirements)
-    2. [Run](#run)
-2. [FAQ/help](#faq/help)
+    2. [Installiation](#installiation)
+    3. [Run](#run)
+    4. [Docker](#docker)
+2. [FAQ/help](#FAQ/Help)
 3. [Credits](#credits)
 
 ## Quick start
@@ -32,7 +34,7 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
 ```
 
 ### Docker
-You need [docker desktop](https://www.docker.com/products/docker-desktop) to start the project
+### You need [docker desktop](https://www.docker.com/products/docker-desktop) to start the project
 
 At first time you need to run follow command
 ``` shell
