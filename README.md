@@ -1,4 +1,4 @@
-# CheClean ![](https://cdn1.savepice.ru/uploads/2020/4/29/12359aaeeca0908fe7afd91c61b4478c-full.png)
+# CheClean ![](docs/CheClean-logo.png)
 
 ## The goal of this project is to make Cherkasy cleaner and better.
 
@@ -13,7 +13,7 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
     2. [Installiation](#installiation)
     3. [Run](#run)
     4. [Docker](#docker)
-2. [FAQ/help](#FAQ/Help)
+2. [FAQ/help](#faq-and-help)
 3. [Credits](#credits)
 
 ## Quick start
@@ -46,12 +46,12 @@ After first start for subsequent use run next command
 > npm run docker
 ```
 
-To insert data into the base you need to run
+To insert mock data into the base you need to run
 ``` shell
 > npm run docker:seed
 ```
 
-## FAQ/Help
+## FAQ and help
 If you got stuck or need some help, contact me
 * Telegram: `@lexander_b1108`
 * Gmail: `alexander.kretov99@gmail.com`
