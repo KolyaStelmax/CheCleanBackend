@@ -20,7 +20,6 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
 
 ### Requirements
 * [node v13](https://nodejs.org/dist/v13.12.0/)
-* [docker desktop](https://www.docker.com/products/docker-desktop)
 * [postgres v12](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 
 ### Installiation
@@ -34,9 +33,9 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
 ```
 
 ### Docker
-### You need [docker desktop](https://www.docker.com/products/docker-desktop) to start the project
+### You can use [docker desktop](https://www.docker.com/products/docker-desktop) to start the project
 
-At first time you need to run follow command
+At first time you need to run the following command
 ``` shell
 > npm run docker:init
 ```
