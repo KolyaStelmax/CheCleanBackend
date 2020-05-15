@@ -50,6 +50,11 @@ To insert mock data into the base you need to run
 > npm run docker:seed
 ```
 
+To run migration use this command
+``` shell
+> npx knex migrate:latest
+```
+
 ## FAQ and help
 If you got stuck or need some help, contact me
 * Telegram: `@lexander_b1108`
