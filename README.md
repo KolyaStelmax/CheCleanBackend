@@ -13,7 +13,7 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
     2. [Installiation](#installiation)
     3. [Run](#run)
     4. [Docker](#docker)
-2. [FAQ/help](#faq-and-help)
+2. [FAQ and help](#faq-and-help)
 3. [Credits](#credits)
 
 ## Quick start
@@ -52,7 +52,7 @@ To insert mock data into the base you need to run
 
 To run migration use this command
 ``` shell
-> npx knex migrate:latest
+> npm run docker:migrate
 ```
 
 ## FAQ and help
