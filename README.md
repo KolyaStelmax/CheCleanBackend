@@ -21,14 +21,33 @@ Our product divided into three main projects: Telegram Bot, Backend, and Fronten
 * [docker desktop](https://www.docker.com/products/docker-desktop)
 * [postgres v12](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads)
 
+### Installiation
+``` shell
+> npm install
+```
+
 ### Run
+``` shell
+> npm start
+```
+
+### Docker
+You need [docker desktop](https://www.docker.com/products/docker-desktop) to start the project
 
 At first time you need to run follow command
-* `npm run docker:init`
+``` shell
+> npm run docker:init
+```
+
 After first start for subsequent use run next command
-* `npm run docker`
+``` shell
+> npm run docker
+```
+
 To insert data into the base you need to run
-* `npm run docker:seed`
+``` shell
+> npm run docker:seed
+```
 
 ## FAQ/Help
 If you got stuck or need some help, contact me
