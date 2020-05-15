@@ -28,8 +28,15 @@
   },
   "scripts": {
     "start": "nodemon src/index.js",
+    "docker": "docker-compose up",
+    "docker:init": "docker-compose build && npm run docker:migrate && docker-compose up",
+    "docker:migrate": "docker-compose run --rm backend npm run migrate",
+    "docker:seed": "docker-compose run --rm backend npm run migrate:seed",
     "lint": "npx eslint src/**.js",
     "lint:fix": "npx eslint src/**.js --fix",
+    "migrate": "npx knex migrate:latest",
+    "migrate:rollback": "npx knex migrate:rollback",
+    "migrate:seed": "npx knex seed:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Lexander1108",
