@@ -1,6 +1,6 @@
-import { casesMock, newCaseMock } from './case.mocks.js';
+const { casesMock, newCaseMock } = require('./case.mocks');
 
-export class CommonMocks {
+class CommonMocks {
 	static get newCase() {
 		return this.getDeepCopy(newCaseMock);
 	}
@@ -12,4 +12,8 @@ export class CommonMocks {
 	static getDeepCopy(mock) {
 		return JSON.parse(JSON.stringify(mock));
 	}
-}
+};
+
+module.exports = {
+	CommonMocks,
+};

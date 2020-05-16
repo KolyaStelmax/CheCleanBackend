@@ -1,10 +1,10 @@
-export const newCaseMock = {
+const newCaseMock = {
 	details: 'мусор',
 	location: { latitude: 49.457857, longitude: 32.043704 },
 	image_url: 'test-image'
 };
 
-export const casesMock = [
+const casesMock = [
 	{
 		id: 1,
 		details: 'мусор',
@@ -22,3 +22,8 @@ export const casesMock = [
 		created_at: '2020-05-03T14:09:38.244Z'
 	}
 ];
+
+module.exports = {
+	newCaseMock,
+	casesMock,
+};
