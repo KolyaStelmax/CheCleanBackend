@@ -13,6 +13,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    "max-len": [2, 140, 4],
     "no-unused-vars": "off",
     'camelcase': 'off',
     'class-methods-use-this': 'off',
