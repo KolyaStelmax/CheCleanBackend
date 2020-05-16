@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+/* eslint-disable class-methods-use-this */
 const { PostgresService } = require('./postgres.service');
 
 class CasesService {
