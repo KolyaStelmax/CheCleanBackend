@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
+/* eslint-disable class-methods-use-this */
 const { PostgresService } = require('./postgres.service');
 
 class CasesService {
@@ -8,11 +11,13 @@ class CasesService {
     this.postgresService = postgresService;
     this.DEFAULT_PARAMS = {
       limit: 25,
-			offset: 0,
+      offset: 0,
     };
   }
 
-  remapCase({ id, details, location, address, image_url, map_image_url, status, created_at }) {
+  remapCase({
+    id, details, location, address, image_url, map_image_url, status, created_at,
+  }) {
     return {
       id,
       details,
@@ -32,26 +37,26 @@ class CasesService {
     const currentParams = {
       ...this.DEFAULT_PARAMS,
       ...searchParams,
-		};
+    };
 
     const casesRespose = await this.postgresService
       .knex('cases')
-			.orderBy('id', 'desc')
+      .orderBy('id', 'desc')
       .limit(currentParams.limit)
-			.offset(currentParams.offset)
-			.modify((query) => {
-				if (currentParams.id) {
-					query.where('id', currentParams.id);
-				}
+      .offset(currentParams.offset)
+      .modify((query) => {
+        if (currentParams.id) {
+          query.where('id', currentParams.id);
+        }
 
-				if (currentParams.status) {
-					query.where('status', currentParams.status);
-				}
+        if (currentParams.status) {
+          query.where('status', currentParams.status);
+        }
 
-				if (currentParams.details) {
-					query.where('details', 'like', `%${currentParams.details}%`);
-				}
-			});
+        if (currentParams.details) {
+          query.where('details', 'like', `%${currentParams.details}%`);
+        }
+      });
 
     return casesRespose.map(this.remapCase);
   }
@@ -65,7 +70,7 @@ class CasesService {
   async createCase(newCase) {
     const databaseCase = {
       ...newCase,
-      location: newCase.location.latitude + ', ' + newCase.location.longitude,
+      location: `${newCase.location.latitude}, ${newCase.location.longitude}`,
       address: '',
       map_image_url: '',
     };
