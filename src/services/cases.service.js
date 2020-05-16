@@ -1,11 +1,13 @@
-const { PostgresService } = require('./postgres.service');
+const { GeocoderService, PostgresService } = require('./index');
 
 class CasesService {
   /**
    * @param {PostgresService} postgresService
+   * @param {GeocoderService} geocoderService
    */
-  constructor(postgresService) {
+  constructor(postgresService, geocoderService) {
     this.postgresService = postgresService;
+    this.geocoderService = geocoderService;
     this.DEFAULT_PARAMS = {
       limit: 25,
       offset: 0,
@@ -68,8 +70,7 @@ class CasesService {
     const databaseCase = {
       ...newCase,
       location: `${newCase.location.latitude}, ${newCase.location.longitude}`,
-      address: '',
-      map_image_url: '',
+      address: (await this.geocoderService.reverseGeocoding(newCase.location.latitude, newCase.location.longitude)).display_name,
     };
 
     const createdCase = await this.postgresService
