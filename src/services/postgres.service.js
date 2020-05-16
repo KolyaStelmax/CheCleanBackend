@@ -1,6 +1,6 @@
-import knex from 'knex';
+const knex = require('knex');
 
-export class PostgresService {
+class PostgresService {
   constructor() {
     this.knex = knex({
       client: 'pg',
@@ -13,4 +13,8 @@ export class PostgresService {
       pool: { min: 0, max: 7 }
     })
   }
-}
+};
+
+module.exports = {
+  PostgresService
+};

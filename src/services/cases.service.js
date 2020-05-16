@@ -1,6 +1,6 @@
-import { PostgresService } from './postgres.service.js'
+const { PostgresService } = require('./postgres.service');
 
-export class CasesService {
+class CasesService {
   /**
    * @param {PostgresService} postgresService
    */
@@ -98,3 +98,7 @@ export class CasesService {
     return this.remapCase(unresolvedCase[0]);
   }
 }
+
+module.exports = {
+  CasesService,
+};

@@ -1,9 +1,8 @@
-import express from 'express';
-import 'express-async-errors';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import { casesService } from './services/index.js';
-
+const express = require('express');
+require('express-async-errors')
+const bodyParser = require('body-parser')
+const dotenv = require('dotenv')
+const { casesService } = require('./services/index')
 dotenv.config();
 
 const app = express();

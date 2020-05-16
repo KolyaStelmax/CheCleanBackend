@@ -1,8 +1,12 @@
-import { CasesService } from './cases.service.js';
-import { PostgresService } from './postgres.service.js';
+const { CasesService } = require('./cases.service');
+const { PostgresService } = require('./postgres.service');
 
-export const postgresService = new PostgresService();
-export const casesService = new CasesService(postgresService);
+const postgresService = new PostgresService();
+const casesService = new CasesService(postgresService);
 
-export * from './cases.service.js';
-export * from './postgres.service.js';
+module.exports = {
+    PostgresService,
+    CasesService,
+    postgresService,
+    casesService,
+};
