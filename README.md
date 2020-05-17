@@ -45,15 +45,17 @@ After first start for subsequent use run next command
 > npm run docker
 ```
 
+To run migration use this command
+``` shell
+> npm run docker:migrate
+```
+
 To insert mock data into the base you need to run
 ``` shell
 > npm run docker:seed
 ```
 
-To run migration use this command
-``` shell
-> npm run docker:migrate
-```
+
 
 ## FAQ and help
 If you got stuck or need some help, contact me
