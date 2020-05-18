@@ -1,5 +1,6 @@
 const express = require('express');
 require('express-async-errors');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const { casesService } = require('./services/index');
@@ -14,6 +15,10 @@ app.use(
     extended: true,
   }),
 );
+
+app.use(cors({
+  origin: process.env.CORS_FRONTEND_DOMAIN,
+}));
 
 app.get('/', (request, response) => {
   response.json({ info: 'CheClean' });
